@@ -1,0 +1,1 @@
+console.log("test from index.js"),document.getElementById("content").textContent="changed by index.js asdfasdf";
