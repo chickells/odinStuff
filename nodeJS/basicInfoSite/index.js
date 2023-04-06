@@ -8,11 +8,31 @@ const server = http.createServer((req, res) => {
     // set header content type
     res.setHeader('Content-Type', 'text/html');
 
-    res.write(
-        // can't use line breaks??? it always breaks the code
-            '<h1>Home page Welcome to the home page! this is generally where youd find a lot more information for a landing page.  Lets pretend this is a shop for racing gear.</h1>'
-        )
-    res.end();
+    let path = './';
+    switch (req.url) {
+        case '/':
+            path += 'index.html'
+            break;
+        case '/about':
+            path += 'about.html'
+            break;
+        case '/contact-me':
+            path += 'contact-me.html'
+            break;
+        default:
+            path += '404.html'
+            break;
+    }
+
+    // send an html file
+    fs.readFile(path, (err, data) => {
+        if (err) {
+            log(err);
+            res.end();
+        } else {
+            res.end(data);
+        }
+    })
 })
 
 server.listen(1337, 'localhost', () => {
