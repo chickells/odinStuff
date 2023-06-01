@@ -1,25 +1,36 @@
-import logo from './logo.svg';
+import React, { useState } from 'react';
+// import logo from './logo.svg';
 import './App.css';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+    const [zipCode, setZipCode] = useState('');
+
+    const handleSubmit = (e) => {
+      e.preventDefault();
+      // Handle zip code submission
+    }
+
+    return (
+      <div className="center-container">
+        <h1 className="title">Enter a Zip Code</h1>
+        <form onSubmit={handleSubmit} className="form">
+          <input 
+            type="text" 
+            placeholder="Zip Code" 
+            value={zipCode} 
+            onChange={(e) => setZipCode(e.target.value)} 
+            className="input"
+          />
+          <button type="submit" className="button">HELLO SHUFFLE</button>
+        </form>
+        {zipCode && (
+          <div className="output">
+            <p>Your entered zip code is:</p>
+            <p className="zip">{zipCode}</p>
+          </div>
+        )}
+      </div>
+    );
+  }
 
 export default App;
