@@ -1,0 +1,15 @@
+# Django
+*.pyc
+__pycache__/
+*.sqlite3
+
+# Ignore everything in the env directory
+env/*
+
+# Node.js
+node_modules/
+
+# React
+build/
+dist/
+.cache/
