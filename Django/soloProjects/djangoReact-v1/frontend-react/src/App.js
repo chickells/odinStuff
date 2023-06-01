@@ -4,10 +4,12 @@ import './App.css';
 function App() {
     const [zipCode, setZipCode] = useState('');
     const [showOutput, setShowOutput] = useState(false);
+    const [newZipCode, setNewZipCode] = useState('');
 
     const handleSubmit = (e) => {
       e.preventDefault();
       setShowOutput(true);
+      setNewZipCode(zipCode);
     }
 
     return (
@@ -26,7 +28,7 @@ function App() {
         {showOutput && (
           <div className="output">
             <p>Your entered zip code is:</p>
-            <p className="zip">{zipCode}</p>
+            <p className="zip">{newZipCode}</p>
           </div>
         )}
       </div>
