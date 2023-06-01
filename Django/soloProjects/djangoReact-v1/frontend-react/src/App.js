@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
-// import logo from './logo.svg';
 import './App.css';
 
 function App() {
     const [zipCode, setZipCode] = useState('');
+    const [showOutput, setShowOutput] = useState(false);
 
     const handleSubmit = (e) => {
       e.preventDefault();
-      // Handle zip code submission
+      setShowOutput(true);
     }
 
     return (
@@ -23,7 +23,7 @@ function App() {
           />
           <button type="submit" className="button">HELLO SHUFFLE</button>
         </form>
-        {zipCode && (
+        {showOutput && (
           <div className="output">
             <p>Your entered zip code is:</p>
             <p className="zip">{zipCode}</p>
