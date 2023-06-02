@@ -1,21 +1,18 @@
 import React, { useState } from 'react';
 import './App.css';
 
+// WORKING GOOGLE API LINK THAT RETURNS JSON DATA FOR RESTAURANTS
+// https://maps.googleapis.com/maps/api/place/textsearch/json?query=restaurants&location=$90018&radius=4828.03&key=AIzaSyCp4-mmKHxrs1OCIgd4y_qOERMgzPA2wIc
 
 function App() {
     const [zipCode, setZipCode] = useState('');
     const [showOutput, setShowOutput] = useState(false);
 
-    const handleSubmit = async (e) => {
+    const handleSubmit = (e) => {
       e.preventDefault();
       setShowOutput(true);
-      
-      const response = await fetch(`https://maps.googleapis.com/maps/api/place/textsearch/json?query=restaurants&location=$90018&radius=4828.03&key=AIzaSyCp4-mmKHxrs1OCIgd4y_qOERMgzPA2wIc`);
-      const data = await response.json();
-      console.log(data);
     }
-      // https://maps.googleapis.com/maps/api/place/textsearch/json?query=restaurants&location=90018&radius=4828.03&key=AIzaSyCp4-mmKHxrs1OCIgd4y_qOERMgzPA2wIc 
-
+      
     return (
       <div className="center-container">
         <h1 className="title">Enter a Zip Code</h1>
@@ -31,7 +28,7 @@ function App() {
         </form>
         {showOutput && (
           <div className="output">
-            
+            {zipCode}
           </div>
         )}
       </div>
