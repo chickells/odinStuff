@@ -42,7 +42,7 @@ function App() {
         </form>
         {showOutput && (
           <div className="output">
-            {zipCode}
+            {/* {restaurants} */}
           </div>
         )}
       </div>
