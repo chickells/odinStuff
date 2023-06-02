@@ -9,7 +9,7 @@ function App() {
       e.preventDefault();
       setShowOutput(true);
       
-      const response = await fetch(`https://maps.googleapis.com/maps/api/place/textsearch/json?query=restaurants&location=${zipCode}&radius=4828.03&key=AIzaSyCp4-mmKHxrs1OCIgd4y_qOERMgzPA2wIc`);
+      const response = await fetch(`/api/textsearch?query=restaurants&location=${zipCode}&radius=4828.03&key=AIzaSyCp4-mmKHxrs1OCIgd4y_qOERMgzPA2wIc`);
       const data = await response.json();
       console.log(data);
     }
