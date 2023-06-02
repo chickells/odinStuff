@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './App.css';
 
 // WORKING GOOGLE API LINK THAT RETURNS JSON DATA FOR RESTAURANTS
-// https://maps.googleapis.com/maps/api/place/textsearch/json?query=restaurants&location=$90018&radius=4828.03&key=AIzaSyCp4-mmKHxrs1OCIgd4y_qOERMgzPA2wIc
+// https://maps.googleapis.com/maps/api/place/textsearch/json?query=restaurants&location=${zipCode}&radius=4828.03&key=AIzaSyCp4-mmKHxrs1OCIgd4y_qOERMgzPA2wIc
 
 function App() {
     const [zipCode, setZipCode] = useState('');
@@ -17,9 +17,6 @@ function App() {
         .then(data => {
           const restaurants = data.results.map(result => 
             `${result.name}: ${result.formatted_address}`
-              // alternative format:
-              // name: result.name,
-              // address: result.formatted_address
           );
           console.log(restaurants);
           // Use the data returned from Django here...
