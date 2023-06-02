@@ -11,6 +11,14 @@ function App() {
     const handleSubmit = (e) => {
       e.preventDefault();
       setShowOutput(true);
+
+      fetch('/api/googlemaps/')
+        .then(response => response.json())
+        .then(data => {
+          console.log(data);
+          // Use the data returned from Django here...
+        })
+        .catch(error => console.error(error))
     }
       
     return (
