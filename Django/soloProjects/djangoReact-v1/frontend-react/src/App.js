@@ -7,6 +7,7 @@ import './App.css';
 function App() {
     const [zipCode, setZipCode] = useState('');
     const [showOutput, setShowOutput] = useState(false);
+    const [restaurants, setRestaurants] = useState([]);
 
     const handleSubmit = (e) => {
       e.preventDefault();
@@ -15,11 +16,10 @@ function App() {
       fetch(`/api/googlemaps/?zip_code=${zipCode}`) // this sends our zipCode variable as a parameter so django 'views.py' file can receive it, then send off to actual API call
         .then(response => response.json())
         .then(data => {
-          const restaurants = data.results.map(result => 
+          const restaurantList = data.results.map(result => 
             `${result.name}: ${result.formatted_address}`
           );
-          console.log(restaurants);
-          // Use the data returned from Django here...
+          setRestaurants(restaurantList)
         })
         .catch(error => console.error(error))
     }
@@ -39,7 +39,10 @@ function App() {
         </form>
         {showOutput && (
           <div className="output">
-            {/* {restaurants} */}
+            {/* RESTAURANT LIST GOES HERE */}
+            {restaurants.map((restaurant, index) =>
+                <p key={index}>{restaurant}</p>
+            )}
           </div>
         )}
       </div>
