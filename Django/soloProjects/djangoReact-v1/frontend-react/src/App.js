@@ -12,7 +12,7 @@ function App() {
       e.preventDefault();
       setShowOutput(true);
 
-      fetch('/api/googlemaps/')
+      fetch(`/api/googlemaps/?zip_code=${zipCode}`) // this sends our zipCode variable as a parameter so django 'views.py' file can receive it, then send off to actual API call
         .then(response => response.json())
         .then(data => {
           const restaurants = data.results.map(result => 
