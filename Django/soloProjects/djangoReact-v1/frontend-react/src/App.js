@@ -8,10 +8,6 @@ function App() {
     const handleSubmit = async (e) => {
       e.preventDefault();
       setShowOutput(true);
-      
-      const response = await fetch(`/api/textsearch?query=restaurants&location=${zipCode}&radius=4828.03&key=AIzaSyCp4-mmKHxrs1OCIgd4y_qOERMgzPA2wIc`);
-      const data = await response.json();
-      console.log(data);
     }
       // https://maps.googleapis.com/maps/api/place/textsearch/json?query=restaurants&location=90018&radius=4828.03&key=AIzaSyCp4-mmKHxrs1OCIgd4y_qOERMgzPA2wIc 
 
@@ -30,7 +26,8 @@ function App() {
         </form>
         {showOutput && (
           <div className="output">
-            
+            <p>Your entered zip code is:</p>
+            <p className="zip">{zipCode}</p>
           </div>
         )}
       </div>
