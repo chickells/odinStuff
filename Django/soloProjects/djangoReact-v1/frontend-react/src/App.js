@@ -15,7 +15,11 @@ function App() {
       fetch('/api/googlemaps/')
         .then(response => response.json())
         .then(data => {
-          console.log(data);
+          const restaurants = data.results.map(result => ({
+            name: result.name,
+            address: result.formatted_address
+          }));
+          console.log(restaurants);
           // Use the data returned from Django here...
         })
         .catch(error => console.error(error))
